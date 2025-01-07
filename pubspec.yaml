@@ -1,14 +1,20 @@
 name: flutter_code_challenge
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ">=3.4.3 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+
+flutter_bloc: ^8.1.6
+oxidized: ^6.2.0
+equatable: ^2.0.7
+bloc: ^8.1.4
+http: ^1.2.2
 
 dev_dependencies:
   flutter_test:

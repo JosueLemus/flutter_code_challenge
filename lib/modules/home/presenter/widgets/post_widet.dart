@@ -7,23 +7,52 @@ class PostWidet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(
-          12,
-        ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('Title'),
-          Text(
-            'Subtitle',
+          color: Colors.grey[50],
+          borderRadius: BorderRadius.circular(
+            12,
           ),
-          TextButton.icon(
-            onPressed: () {},
-            label: Text('Read more'),
-            icon: Icon(
-              Icons.arrow_right_alt,
+          border: Border.all(
+            color: Colors.grey[200] ?? Colors.grey,
+          )),
+      child: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                16,
+                16,
+                16,
+                0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Somnio Software at Google I/O 2024: AI, Flutter, and the road ahead for App Development',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 4,
+                  ),
+                  Expanded(
+                    child: Text(
+                      'Unlock the power of AI with generative media models & enhanced search! Google I/O 2024 unveiled a developer-focused future with Gemini & advancements in Flutter. Unlock the power of AI with generative media models & enhanced search! Google I/O 2024 unveiled a developer-focused future with Gemini & advancements in Flutter.',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 5,
+                    ),
+                  ),
+                  TextButton.icon(
+                    iconAlignment: IconAlignment.end,
+                    onPressed: () {},
+                    label: Text('Read more'),
+                    icon: Icon(
+                      Icons.arrow_right_alt,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           ClipRRect(

@@ -9,7 +9,6 @@ class BlogPostsList extends StatelessWidget {
     const double postWidth = 300;
     final screenWidth = MediaQuery.sizeOf(context).width;
     final int crossAxisCount = (screenWidth / postWidth).floor().clamp(1, 4);
-
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,

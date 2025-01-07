@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_code_challenge/modules/home/presenter/widgets/blog_posts_list.dart';
 import 'package:flutter_code_challenge/modules/home/presenter/widgets/tab_bar_delegate.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -54,11 +55,7 @@ class HomeScreen extends StatelessWidget {
             },
             body: const TabBarView(
               children: [
-                SizedBox(
-                  child: Center(
-                    child: Text('data'),
-                  ),
-                ),
+                BlogPostsList(),
                 SizedBox(
                   child: Center(
                     child: Text('data'),

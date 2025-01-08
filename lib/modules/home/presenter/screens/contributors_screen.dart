@@ -60,24 +60,39 @@ class ContributorsContent extends StatelessWidget {
                     FetchContributorsEvent(),
                   );
             },
-            child: ListView.builder(
-              itemCount: contributors.length,
-              padding: const EdgeInsets.all(8.0),
-              itemBuilder: (context, index) {
-                final user = contributors[index];
-                return Card(
-                  elevation: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(user.photoUrl),
-                    ),
-                    title: Text(user.name),
-                    subtitle: Text('@${user.username}'),
-                    onTap: () => _showUserDetails(context, user),
-                  ),
-                );
-              },
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 800,
+                ),
+                child: ListView.builder(
+                  itemCount: contributors.length,
+                  padding: const EdgeInsets.all(8.0),
+                  itemBuilder: (context, index) {
+                    final user = contributors[index];
+                    return Card(
+                      elevation: 4,
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(user.photoUrl),
+                        ),
+                        title: Text(
+                          user.name,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        subtitle: Text(
+                          '@${user.username}',
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        onTap: () => _showUserDetails(context, user),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
           );
         }

@@ -53,10 +53,13 @@ class HomeScreen extends StatelessWidget {
                 ),
               ];
             },
-            body: const TabBarView(
+            body: TabBarView(
               children: [
-                BlogPostsList(),
-                SizedBox(
+                Container(
+                  color: Colors.grey[50],
+                  child: const BlogPostsList(),
+                ),
+                const SizedBox(
                   child: Center(
                     child: Text('data'),
                   ),

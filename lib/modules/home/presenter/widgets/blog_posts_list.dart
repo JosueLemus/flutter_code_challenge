@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_code_challenge/core/di/dependencies.dart';
 import 'package:flutter_code_challenge/modules/home/domain/repository/post_repository.dart';
 import 'package:flutter_code_challenge/modules/home/presenter/blocs/bloc/post_bloc.dart';
+import 'package:flutter_code_challenge/modules/home/presenter/widgets/post_widet.dart';
 
 class BlogPostsList extends StatelessWidget {
   const BlogPostsList({super.key});
@@ -25,18 +26,20 @@ class BlogPostsContent extends StatefulWidget {
 }
 
 class _BlogPostsContentState extends State<BlogPostsContent> {
-  late final ScrollController _scrollController;
+  ScrollController? _scrollController;
 
   @override
-  void initState() {
-    super.initState();
-    _scrollController = ScrollController()..addListener(_onScroll);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_scrollController == null) {
+      _scrollController = PrimaryScrollController.of(context);
+      _scrollController?.addListener(_onScroll);
+    }
   }
 
   @override
   void dispose() {
-    _scrollController.removeListener(_onScroll);
-    _scrollController.dispose();
+    _scrollController?.removeListener(_onScroll);
     super.dispose();
   }
 
@@ -51,26 +54,10 @@ class _BlogPostsContentState extends State<BlogPostsContent> {
   }
 
   bool get _isBottom {
-    if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.position.pixels;
+    if (!(_scrollController?.hasClients ?? false)) return false;
+    final maxScroll = _scrollController!.position.maxScrollExtent;
+    final currentScroll = _scrollController!.position.pixels;
     return currentScroll >= (maxScroll * 0.9);
-  }
-
-  void _showErrorDialog(BuildContext context, String message) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Error"),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text("OK"),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -132,31 +119,7 @@ class _BlogPostsContentState extends State<BlogPostsContent> {
                 }
 
                 final post = posts[index];
-                return Card(
-                  elevation: 4,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          post.id.toString(),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          post.body,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                return PostWidet(post: post);
               },
             ),
           );
@@ -164,6 +127,22 @@ class _BlogPostsContentState extends State<BlogPostsContent> {
 
         return const SizedBox.shrink();
       },
+    );
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Error"),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text("OK"),
+          ),
+        ],
+      ),
     );
   }
 }

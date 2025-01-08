@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_code_challenge/core/di/dependencies.dart';
+import 'package:flutter_code_challenge/core/theme/app_theme.dart';
 import 'package:flutter_code_challenge/modules/home/presenter/home_screen.dart';
 
 void main() {
   setupDependencies();
-  runApp(const MainApp());
+  runApp(
+    const MainApp(),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -12,8 +15,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      darkTheme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
+      home: const HomeScreen(),
     );
   }
 }

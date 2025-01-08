@@ -10,7 +10,6 @@ class HomeScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: SafeArea(
           child: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -41,8 +40,6 @@ class HomeScreen extends StatelessWidget {
                 SliverPersistentHeader(
                   delegate: TabBarDelegate(
                     const TabBar(
-                      labelColor: Colors.black,
-                      unselectedLabelColor: Colors.grey,
                       tabs: [
                         Tab(icon: Icon(Icons.grid_on), text: "Posts"),
                         Tab(icon: Icon(Icons.android), text: "TO-DO"),
@@ -55,10 +52,7 @@ class HomeScreen extends StatelessWidget {
             },
             body: TabBarView(
               children: [
-                Container(
-                  color: Colors.grey[50],
-                  child: const BlogPostsList(),
-                ),
+                BlogPostsList(),
                 const SizedBox(
                   child: Center(
                     child: Text('data'),

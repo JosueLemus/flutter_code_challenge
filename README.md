@@ -4,6 +4,11 @@
 
 This project is a Flutter-based application designed to display a blog-style page with posts and contributors. It uses the [jsonplaceholder API](https://jsonplaceholder.typicode.com/) to fetch data.
 
+
+![Captura de pantalla 2025-01-08 a la(s) 3 39 10 p  m](https://github.com/user-attachments/assets/69e57e7f-7754-4c12-aba3-ec62dc6be0ba)
+
+
+
 ---
 
 ## Features

@@ -41,6 +41,7 @@ class HomeScreen extends StatelessWidget {
                 SliverPersistentHeader(
                   delegate: TabBarDelegate(
                     const TabBar(
+                      indicatorSize: TabBarIndicatorSize.tab,
                       tabs: [
                         Tab(
                           icon: Icon(Icons.grid_on),

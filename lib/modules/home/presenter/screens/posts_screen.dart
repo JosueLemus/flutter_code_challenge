@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_code_challenge/core/di/dependencies.dart';
 import 'package:flutter_code_challenge/modules/home/domain/repository/post_repository.dart';
-import 'package:flutter_code_challenge/modules/home/presenter/blocs/bloc/post_bloc.dart';
+import 'package:flutter_code_challenge/modules/home/presenter/blocs/post/post_bloc.dart';
 import 'package:flutter_code_challenge/modules/home/presenter/widgets/post_widet.dart';
 
-class BlogPostsList extends StatelessWidget {
-  const BlogPostsList({super.key});
+class PostsScreen extends StatelessWidget {
+  const PostsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

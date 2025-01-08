@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_code_challenge/modules/home/presenter/widgets/blog_posts_list.dart';
+import 'package:flutter_code_challenge/modules/home/presenter/screens/contributors_screen.dart';
+import 'package:flutter_code_challenge/modules/home/presenter/screens/posts_screen.dart';
 import 'package:flutter_code_challenge/modules/home/presenter/widgets/tab_bar_delegate.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -41,8 +42,14 @@ class HomeScreen extends StatelessWidget {
                   delegate: TabBarDelegate(
                     const TabBar(
                       tabs: [
-                        Tab(icon: Icon(Icons.grid_on), text: "Posts"),
-                        Tab(icon: Icon(Icons.android), text: "TO-DO"),
+                        Tab(
+                          icon: Icon(Icons.grid_on),
+                          text: 'Posts',
+                        ),
+                        Tab(
+                          icon: Icon(Icons.people),
+                          text: 'Contributors',
+                        ),
                       ],
                     ),
                   ),
@@ -50,14 +57,10 @@ class HomeScreen extends StatelessWidget {
                 ),
               ];
             },
-            body: TabBarView(
+            body: const TabBarView(
               children: [
-                BlogPostsList(),
-                const SizedBox(
-                  child: Center(
-                    child: Text('data'),
-                  ),
-                ),
+                PostsScreen(),
+                ContributorsScreen(),
               ],
             ),
           ),

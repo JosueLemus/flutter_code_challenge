@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_code_challenge/modules/home/domain/entities/post_entity.dart';
 import 'package:flutter_code_challenge/modules/home/presenter/widgets/custom_text_icon_button.dart';
+import 'package:flutter_code_challenge/modules/home/presenter/widgets/post_image.dart';
 
 class PostWidet extends StatelessWidget {
   final PostEntity post;
@@ -71,17 +72,9 @@ class PostWidet extends StatelessWidget {
                 ),
                 child: CustomTextIconButton(),
               ),
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(12),
-                ),
-                child: Image.network(
-                  'https://picsum.photos/id/${post.id}/800/300',
-                  height: 100,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              PostImage(
+                imageUrl: 'https://picsum.photos/id/${post.id}/800/300',
+              )
             ],
           ),
         ],

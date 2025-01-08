@@ -1,4 +1,6 @@
-class PostEntity {
+import 'package:equatable/equatable.dart';
+
+class PostEntity extends Equatable {
   final int userId;
   final int id;
   final String title;
@@ -10,4 +12,7 @@ class PostEntity {
     required this.title,
     required this.body,
   });
+
+  @override
+  List<Object?> get props => [userId, id, title, body];
 }
